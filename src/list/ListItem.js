@@ -141,6 +141,8 @@ const ListItem = props => {
           : avatar &&
             !React.isValidElement(avatar) && (
               <Avatar
+                onLongPress={leftIconOnLongPress}
+                onPress={leftIconOnPress}
                 avatarStyle={avatarStyle && avatarStyle}
                 containerStyle={avatarContainerStyle && avatarContainerStyle}
                 overlayContainerStyle={
