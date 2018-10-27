@@ -3,6 +3,7 @@ import React from 'react';
 import {
   View,
   Text,
+  ImageBackground,
   Image,
   Platform,
   StyleSheet,
@@ -24,6 +25,7 @@ const Avatar = props => {
     onLongPress,
     containerStyle,
     icon,
+    overrideIcon,
     iconStyle,
     source,
     small,
@@ -112,22 +114,28 @@ const Avatar = props => {
   const renderContent = () => {
     if (source) {
       return (
+        <View   style={[
+            styles.avatar,
+            avatarStyle && avatarStyle,
+             { borderRadius: width / 2 },
+          ]}>
         <Image
           style={[
             styles.avatar,
-            rounded && { borderRadius: width / 2 },
+             { borderRadius: width / 2,position:'absolute' },
             avatarStyle && avatarStyle,
           ]}
           source={source}
         >
-        <Icon
-          style={iconStyle && iconStyle}
-          color={icon.color || 'white'}
-          name={icon.name || 'user'}
-          size={icon.size || iconSize}
-          type={icon.type && icon.type}
-        />
+      
         </Image>
+        {overrideIcon  && <Icon
+            name={overrideIcon.name}
+            type={overrideIcon.type}
+            size={overrideIcon.size | avatarStyle.height}
+            color={overrideIcon.color}
+      />}
+</View>
       );
     } else if (title) {
       return (
@@ -161,7 +169,7 @@ const Avatar = props => {
     overlayContainer: {
       flex: 1,
       alignItems: 'center',
-      backgroundColor: 'rgba(0,0,0,0.2)',
+      backgroundColor: 'transparent',
       alignSelf: 'stretch',
       justifyContent: 'center',
       position: 'absolute',
