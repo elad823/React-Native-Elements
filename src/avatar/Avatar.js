@@ -119,7 +119,15 @@ const Avatar = props => {
             avatarStyle && avatarStyle,
           ]}
           source={source}
+        >
+        <Icon
+          style={iconStyle && iconStyle}
+          color={icon.color || 'white'}
+          name={icon.name || 'user'}
+          size={icon.size || iconSize}
+          type={icon.type && icon.type}
         />
+        </Image>
       );
     } else if (title) {
       return (
