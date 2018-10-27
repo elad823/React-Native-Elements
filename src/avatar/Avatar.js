@@ -3,7 +3,6 @@ import React from 'react';
 import {
   View,
   Text,
-  ImageBackground,
   Image,
   Platform,
   StyleSheet,
@@ -116,26 +115,25 @@ const Avatar = props => {
       return (
         <View   style={[
             styles.avatar,
+            rounded &&  { borderRadius: width / 2 },
             avatarStyle && avatarStyle,
-             { borderRadius: width / 2 },
           ]}>
         <Image
           style={[
             styles.avatar,
-             { borderRadius: width / 2,position:'absolute' },
+            { position:'absolute' },
+            rounded && { borderRadius: width / 2 },
             avatarStyle && avatarStyle,
           ]}
           source={source}
-        >
-      
-        </Image>
+        />
         {overrideIcon  && <Icon
             name={overrideIcon.name}
             type={overrideIcon.type}
             size={overrideIcon.size | avatarStyle.height}
             color={overrideIcon.color}
       />}
-</View>
+     </View>
       );
     } else if (title) {
       return (
